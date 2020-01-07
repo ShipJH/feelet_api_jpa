@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,7 +52,7 @@ public class Cigar {
 	@ColumnDefault(value = "20")
 	private Integer count;
 	
-	@OneToMany(mappedBy = "cigar")
+	@OneToMany(mappedBy = "cigar" , fetch = FetchType.LAZY)
 	private List<Spend> spend = new ArrayList<>();
 	
 
