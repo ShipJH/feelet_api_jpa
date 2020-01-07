@@ -1,5 +1,8 @@
 package com.sp.feelet.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,15 +10,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "test")
+@Entity(name = "CIGAR")
 @Getter @Setter
-public class TestEntity {
+public class Cigar {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +34,8 @@ public class TestEntity {
 	@Column(nullable = false)
 	private Integer price;
 
-	@ColumnDefault(value = "WESTERN")
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "varchar(255) default 'WESTERN'")
 	private MadeOrigin madeOrigin;
 	
 	@Column(nullable = false)
@@ -40,11 +45,15 @@ public class TestEntity {
 	private Double tar;
 	
 	@Enumerated(EnumType.STRING)
-	@ColumnDefault(value = "CIGAR")
+	@Column(columnDefinition = "varchar(255) default 'CIGAR'")
 	private CigarType type; 
 	
 	@ColumnDefault(value = "20")
 	private Integer count;
+	
+	@OneToMany(mappedBy = "cigar")
+	private List<Spend> spend = new ArrayList<>();
+	
 
 }
 
