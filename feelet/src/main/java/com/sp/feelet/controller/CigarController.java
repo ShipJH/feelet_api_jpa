@@ -1,6 +1,5 @@
 package com.sp.feelet.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +21,7 @@ public class CigarController {
 		this.CigarService = cigarService;
 	}
 	
-	@GetMapping(value = "/test")
-	public ResponseEntity<List<String>> test() {
-		
-		List<String> abc = Arrays.asList("ABC","DEF","GHI");
-		
-		return new ResponseEntity<List<String>>(abc, HttpStatus.OK);
-	}
-	
-	@GetMapping(value = "/getList")
+	@GetMapping(value = "/cigars")
 	public ResponseEntity<List<Cigar>> test2(){
 		return new ResponseEntity<List<Cigar>>(this.CigarService.findAll(), HttpStatus.OK);
 	}
