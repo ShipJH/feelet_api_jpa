@@ -50,7 +50,6 @@ public class Cigar {
 //	@OneToMany(mappedBy = "cigar" , fetch = FetchType.LAZY)
 //	private List<Spend> spend = new ArrayList<>();
 	
-
 }
 
 enum CigarType{
