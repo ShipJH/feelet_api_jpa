@@ -22,7 +22,7 @@ public class CigarController {
 	}
 	
 	@GetMapping(value = "/cigars")
-	public ResponseEntity<List<Cigar>> test2(){
+	public ResponseEntity<List<Cigar>> list(){
 		return new ResponseEntity<List<Cigar>>(this.CigarService.findAll(), HttpStatus.OK);
 	}
 	
