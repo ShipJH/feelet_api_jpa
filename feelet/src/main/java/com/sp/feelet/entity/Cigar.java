@@ -10,11 +10,12 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "CIGAR")
-@Getter @Setter
+@Getter @Setter @Builder
 public class Cigar {
 
 	@Id
@@ -30,6 +31,7 @@ public class Cigar {
 	@Column(nullable = false)
 	private Integer price;
 
+	//원산지
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "varchar(255) default 'WESTERN'")
 	private MadeOrigin madeOrigin;
@@ -40,6 +42,7 @@ public class Cigar {
 	@Column(nullable = false)
 	private Double tar;
 	
+	//CIGAR:연초, HEETS:아이코스힛츠, FIIT:릴피츠, LIQUID:액상
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "varchar(255) default 'CIGAR'")
 	private CigarType type; 

@@ -12,13 +12,16 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.sp.feelet.commonCode.CommonCode;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "SPEND")
-@Getter @Setter
-public class Spend {
-
+@Entity(name = "PICK")
+@Getter @Setter @Builder
+public class Pick {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,11 +34,11 @@ public class Spend {
 	@JoinColumn(name = "cigar_id")
 	private Cigar cigar;
 	
-	//피운갯수.
-	@Column(columnDefinition = "int(11) default 0")
-	private Integer usedCount;
+	@Column
+	private CommonCode.YesNo useYn;
 	
 	@CreationTimestamp
 	private LocalDateTime registDateTime;
+	
 	
 }
